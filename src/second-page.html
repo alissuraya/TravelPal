@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Greek Meal</title>
+    <style>
+        *{
+        margin: 0;
+        padding: 0;
+        text-decoration: none;
+        outline: none;
+        transition: all .2s linear;
+      }
+
+      html{ /*scroller*/
+        font-size: 100%;
+        overflow-x: hidden;
+        scroll-behavior: smooth;
+        scroll-padding-top: 7rem;
+      }
+
+      html::-webkit-scrollbar-track{
+        background: lightgrey;
+      }
+
+      html::-webkit-scrollbar{
+        width: 1rem;
+      }
+
+
+      html::-webkit-scrollbar-thumb{
+        background: #545454;
+      }
+
+      body{
+        background-color: #f5f5f5;
+      }
+
+      .header .logo{ /*Greece logo*/
+        font-family: rosemary;
+        font-size: 30px;
+        color: #d4af37;
+        justify-content: space-between ;
+        margin-right: 640px;
+		  }
+
+      .header img{
+        width: 70px;
+        height: 40px;
+        margin-left: auto;
+      }
+
+      .header .head{
+        display: flex;
+        align-items: center;
+      }
+
+      #hr{
+        border-top: 1px solid #959392;
+        opacity: 50%;
+        display: block;
+        margin-top: 0.5em;
+        margin-bottom: 0.5em;
+        margin-right: auto;
+        margin-left: auto;
+        width: 50%;
+      }
+
+      #navbar{  /*navigation bar*/
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      #navbar li{
+        list-style: none;
+        padding: 0 20px;
+        position: relative;
+      }
+
+      #navbar li a{
+        text-decoration: none;
+        font-size: 20px;
+        color: #959392;
+        transition: 0.3s ease;
+        font-family: 'Poppins', sans-serif;
+      }
+
+      #navbar li a:hover{
+        color: #333;
+        overflow: hidden;
+      }
+
+      #navbar li a:hover::after{
+        content: "";
+        width: 30%;
+        height: 2px;
+        background: #d4af37;
+        position: absolute;
+        bottom: -4px;
+        left: 20px;
+        overflow: hidden;
+      }
+
+      marquee{  /*marquee*/
+        background-color: #ccdde8;
+        font-family: sans-serif;
+        font-size: 15px;
+        letter-spacing: 2px;
+        color: #034488;
+      }
+
+      .slideshow-container {  /*Slideshow*/
+        max-width: 100%;
+        position: relative;
+        margin: auto;
+      }
+
+      .prev, .next {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        width: auto;
+        padding: 16px;
+        margin-top: -22px;
+        color: white;
+        font-weight: bold;
+        font-size: 18px;
+        transition: 0.6s ease;
+        border-radius: 0 3px 3px 0;
+        user-select: none;
+      }
+
+      .next {
+        right: 0;
+        border-radius: 3px 0 0 3px;
+      }
+
+      .prev:hover, .next:hover {
+        background-color: #333;
+      }
+
+      .numbertext {
+        color: #f2f2f2;
+        font-size: 15px;
+        font-family: sans-serif;
+        color: #004AAD;
+        padding: 8px 12px;
+        position: absolute;
+        top: 0;
+      }
+
+
+      .fade {
+        animation-name: fade;
+        animation-duration: 2.0s;
+      }
+
+      @keyframes fade {
+        from {opacity: .4} 
+        to {opacity: 1}
+      }
+
+      @media only screen and (max-width: 300px) {
+        .prev, .next,.text {font-size: 11px}
+      }
+
+    /* Container for the meal info */
+    .meal-info {
+      display: flex;
+      justify-content: center;
+      background-color: white;
+      width: 80%;
+      height: 473px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Container for the meal image */
+    .food-container {
+      width: 40%;
+      height: 100%;
+    }
+
+    /* Meal image */
+    .food-container img {
+      width: 100%;
+      height: auto;
+    }
+
+    /* Container for the meal description */
+    .food-description {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 60%;
+      margin-left: 2rem;
+    }
+
+    /* Meal title */
+    .meal-title {
+      font-size: 2.2rem;
+      color: #333;
+      margin-bottom: 1rem;
+    }
+
+    /* Meal description */
+    .meal-description {
+      font-size: 1.5rem;
+      color: #333;
+      margin-bottom: 1rem;
+    }
+
+    /* Media queries for smaller screens */
+    @media screen and (max-width: 768px) {
+      .meal-info {
+        flex-direction: column;
+        height: auto;
+      }
+      
+      .food-container {
+        width: 100%;
+        margin-bottom: 1rem;
+      }
+      
+      .food-description {
+        width: 100%;
+        margin-left: 0;
+      }
+      
+      .meal-title {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+      }
+      
+      .meal-description {
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+      }
+    }
+
+    /* Container for the meal info */
+    .meal-info2 {
+      display: flex;
+      justify-content: center;
+      background-color: white;
+      width: 80%;
+      height: 473px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Container for the meal image */
+    .food-container2 {
+      width: 40%;
+      height: 100%;
+    }
+
+    /* Meal image */
+    .food-container2 img {
+      width: 100%;
+      height: auto;
+    }
+
+    /* Container for the meal description */
+    .food-description2 {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 60%;
+      margin-left: 2rem;
+    }
+
+    /* Meal title */
+    .meal-title2 {
+      font-size: 2.2rem;
+      color: #333;
+      margin-bottom: 1rem;
+    }
+
+    /* Meal description */
+    .meal-description2 {
+      font-size: 1.5rem;
+      color: #333;
+      margin-bottom: 1rem;
+    }
+
+    /* Media queries for smaller screens */
+    @media screen and (max-width: 768px) {
+      .meal-info2 {
+        flex-direction: column;
+        height: auto;
+      }
+      
+      .food-container2 {
+        width: 100%;
+        margin-bottom: 1rem;
+      }
+      
+      .food-description2 {
+        width: 100%;
+        margin-left: 0;
+      }
+      
+      .meal-title2 {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+      }
+      
+      .meal-description2 {
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+      }
+    }
+
+    h4{ /*Famous meal in Greece*/
+        font-size: 40px;
+        color: #034488;
+        cursor: default;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+    }
+
+    .meals{
+      display: flex;
+      justify-content: center;
+    }
+
+      .another_meal {
+        position: relative;
+        width: 50%;
+        max-width: 300px;
+        margin: 20px;
+      }
+
+      .another_meal .image {
+        display: block;
+        width: 300px;
+        height: 200px;
+        height: auto;
+      }
+
+      .another_meal .overlay {
+        position: absolute; 
+        bottom: 0; 
+        background: rgba(0, 0, 0, 0.5); /* Black see-through */
+        width: 265px;
+        height: 340px;
+        transition: .5s ease;
+        opacity:0;
+        text-align: center;
+        margin-right: 10px;
+        padding: 18px;
+      }
+
+      .another_meal:hover .overlay {
+        opacity: 7;
+      }
+
+      .another_meal .overlay h5{
+        color: #d4af37;
+        font-size: 25px;
+        font-family: sans-serif;
+        letter-spacing: 0.4px;
+      }
+
+      .another_meal .overlay p{
+        color: white;
+        font-size: 18px;
+        line-height: 30px;
+        letter-spacing: 0.4px;
+        font-family: sans-serif;
+      }
+
+      .another_meal a{
+          background-color: #d4af37;
+          color: #333;
+          padding: 8px 18px;
+          margin: 10px 0;
+          border: none;
+          cursor: pointer;
+          width: 100px;
+          text-align: center;
+          font-family: sans-serif;
+          border-radius: 5px;
+          font-size: 13px;
+          letter-spacing: 0.2px;
+        }
+
+        .another_meal a:hover{
+          opacity: 0.7;
+        }
+
+      .select_meal{ /*search meal*/
+          width: 90%;
+          box-shadow:  0 2px 5px rgba(0, 0, 0, 0.3);
+          background-color: #dde8f0;
+        }
+
+        .select_meal h6{
+          font-size: 30px;
+          color: #034488;
+          letter-spacing: 0.1em;
+        }
+
+        .select_meal #meal-input{
+          width: 300px;
+          height: 35px;
+          border: 1px solid #dde8f0;
+          border-radius: 5px;
+          font-family: sans-serif;
+        }
+
+        .select_meal #meal-button{
+          background-color: rgb(78, 78, 78);
+          color: white;
+          padding: 10px 20px;
+          margin: 10px 0;
+          border: none;
+          cursor: pointer;
+          width: 100px;
+          text-align: center;
+          font-family: sans-serif;
+          border-radius: 5px;
+          font-size: 13px;
+          letter-spacing: 0.2px;
+        }
+
+        .select_meal #meal-button:hover{
+          opacity: 0.8;
+        }
+
+        footer {  /*footer*/
+            background-color: #333;
+            color: #fff;
+            padding: 23.5px 0;
+        }
+
+        .footerr {
+            margin: 0 auto;
+            text-align: center;
+            max-width: 100%;
+        }
+
+        .footerr .visitgreece {
+            margin: 0;
+            padding: 24px 0;
+            font-size: 17px;
+
+        }
+
+        .footerr .visitgreece:hover {
+            color: #98b8cf;
+        }
+
+        .footerr ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .footerr li {
+            margin: 0 10px;
+        }
+
+        .footerr a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .footerr a:hover {
+          color: #98b8cf;
+        }
+
+        .footerr ul .link:hover{
+          color: #98b8cf;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="countdown">
+        <marquee width="100%" direction="right" height="40px">
+        <br>
+        - GREECE IS A GOOD PLACE FOR REBIRTHS - GREECE IS THE MOST MAGICAL PLACE ON EARTH -  LIFE ISN'T BLACK AND WHITE, IT'S BLUE AND WHITE - GREECE IS ALWAYS IN OUR HEART -
+        </marquee>
+     </section>
+  
+    <center>
+      <section class="header">
+        <div class="head">
+          <img href="index.html" src="logo.png" href="index.html">
+          <a class="logo" href="index.html">VISIT GREECE</a>
+        </div>
+        <hr id="hr">
+        <div>
+          <ul id="navbar">
+            <li><a href="index.html">About Greece</a></li> <!--Home navbar-->
+            <li><a href="second-page.html">Greek Meal</a></li> <!--Meal navbar-->
+          </ul>
+        </div>
+      </section><br>
+    </center>
+
+    <div class="Slideshow">
+      <div class="slideshow-container">
+        <div class="mySlides fade">
+          <div class="numbertext">1 / 2</div>
+          <img src="meal1.png" style="width:100%">
+        </div>
+  
+        <div class="mySlides fade">
+          <div class="numbertext">2 / 2</div>
+          <img src="meal2.png" style="width:100%">
+        </div>
+  
+        <a class="prev" onclick="plusSlides(-1)">❮</a>
+        <a class="next" onclick="plusSlides(1)">❯</a>
+      </div>
+    </div>
+    <br><br>
+
+    <center>
+    <div class="meal-info">
+      <div class="food-container">
+        <img src="food1.jpg" alt="Meal Image">
+      </div>
+      <div class="food-description">
+        <h2 class="meal-title">"George Bernard Shaw"</h2><br>
+        <p class="meal-description">There is no love sincerer than the love of food.</p>
+      </div>
+    </div>
+  </center><br><br>
+
+  <center>
+    <div class="meal-info2">
+      <div class="food-description2">
+        <h2 class="meal-title2">Let food be thy medicine and medicine be <br>thy food.</h2><br>
+        <p class="meal-description2">—  Hippocrates, 460-370 BC, Ancient Greek physician, the “Father of Medicine”</p>
+      </div>
+      <div class="food-container2">
+        <img src="food2.jpg" alt="Meal Image">
+      </div>
+    </div>
+  </center><br><br><br>
+
+  <hr><br>
+
+  <center><h4>Famous cuisine in Greece</h4><br></center>
+  <div class="meals">
+    <div class="another_meal">
+      <img src="pastitsio.jpg" alt="Pastitsio" class="image">
+      <div class="overlay">
+        <h5>Pastitsio</h5><br>
+        <p>Pastitsio is another traditional Greek dish that consists of baked layers of pasta, juicy minced beef, bechamel and tomato sauce, topped melted cheese. </p>
+        <br><a href="https://www.recipetineats.com/pastitsio-greek-beef-pasta-bake/">Get Recipe</a>
+      </div>
+    </div>
+
+    <div class="another_meal">
+      <img src="sokolatopita.jpg" alt="Sokolatopita" class="image">
+      <div class="overlay">
+        <h5>Sokolatopita</h5><br>
+        <p>Super most chocolate cake filled with a chocolate syrup and topped with a rich ganache.  </p>
+        <br><a href="https://www.mygreekdish.com/recipe/chocolate-cake-greek-style-sokolatopita/">Get Recipe</a>
+      </div>
+    </div>
+    
+    <div class="another_meal">
+      <img src="fetacheese.jpg" alt="Feta Cheese" class="image">
+      <div class="overlay">
+        <h5>Feta Cheese</h5><br>
+        <p>The feta cheese is wrapped in layers of phyllo and after it's baked, some Greek honey is drizzled over it and it’s topped with a sprinkle of sesame seeds. </p>
+        <br><a href="https://thescranline.com/greek-honey-baked-feta/">Get Recipe</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="meals">
+    <div class="another_meal">
+      <img src="gyros.jpg" alt="Gyros" class="image">
+      <div class="overlay">
+        <h5>Gyros</h5><br>
+        <p>It's a dish made with grilled meat shaved off a vertical rotisserie, much like shawarma or the Turkish doner kebab.Chicken. </p>
+        <br><a href="https://www.recipetineats.com/greek-chicken-gyros-with-tzatziki/">Get Recipe</a>
+      </div>
+    </div>
+
+    <div class="another_meal">
+      <img src="bougatsa.jpg" alt="Bougatsa" class="image">
+      <div class="overlay">
+        <h5>Bougatsa</h5><br>
+        <p>Bougatsa is a Greek breakfast dessert made with either semolina custard or cheese and wrapped in layers of crispy phyllo, a thin dough used in pastries.  </p>
+        <br><a href="https://www.mygreekdish.com/recipe/bougatsa/">Get Recipe</a>
+      </div>
+    </div>
+
+    <div class="another_meal">
+      <img src="Choriatiki.jpg" alt="Choriatiki " class="image">
+      <div class="overlay">
+        <h5>Choriatiki</h5><br>
+        <p>An all-time favorite for all Greeks is Choriatiki salad, which is a must with almost every single meal. This Greek salad is made with cucumber, olives, tomatoes, and a big piece of feta cheese. </p>
+        <br><a href="https://www.bigoven.com/recipe/greek-salad-choriatiki-a-journey-to-the-islands/184768">Get Recipe</a>
+      </div>
+    </div>
+  </div><br><br>
+
+  <hr><br><br>
+    
+    <center>
+    <div class="select_meal"><br><br>
+    <strong class="find_meal"><h6>Find Other Grecian Meals <span>&#128071;&#127995;</span>:</h6></strong><br>
+    <select name="location" id="meal-input" required>
+        <option>Find your delight</option>
+        <option>Chicken Quinoa Greek Salad</option> 
+        <option>Garides Saganaki</option> 
+        <option>Lamb and Lemon Souvlaki</option> 
+        <option>Moussaka</option> 
+        <option>Gigantes Plaki</option> 
+        <option>Lamb Tzatziki Burgers</option> 
+        <option>Stuffed Lamb Tomatoes</option> 
+    </select>
+
+      <input id="meal-button" type="submit" value="Search"/><br>
+      <p id="meal-list"></p><br><br></center>
+    </div><br><br>
+
+    <footer>
+      <div class="footerr">
+        <a class="visitgreece" href="index.html">&copy; Visit Greece</a><br><br>
+        <ul>
+          <li><a class="link" href="https://en.wikipedia.org/wiki/Athens">Athens</a></li>
+          <li><a class="link" href="https://en.wikipedia.org/wiki/Heraklion">Heraklion</a></li>
+          <li><a class="link" href="https://en.wikipedia.org/wiki/Volos">Volos</a></li>
+          <li><a class="link" href="https://en.wikipedia.org/wiki/Chania">Chania</a></li>
+          <li><a class="link" href="https://en.wikipedia.org/wiki/Santorini">Santorini</a></li>
+          <li><a class="link" href="https://en.wikipedia.org/wiki/Kavala">Kavala</a></li>
+        </ul>
+  
+        <br>
+        <ul>
+          <li><a class="link" href="https://www.facebook.com/"><i class="fa-brands fa-facebook-f"></i></a>
+          <li><a class="link" href="https://twitter.com/"><i class="fa-brands fa-twitter"></i></li></a>
+          <li><a class="link" href="https://www.instagram.com/"><i class="fa-brands fa-instagram"></i></li></a>
+          <li><a class="link" href="https://www.tiktok.com/"><i class="fa-brands fa-tiktok"></i></li></a>
+        </ul>
+      </div>
+    </footer>
+
+    <script src="meal_function.js"></script>
+
+</body>
+</html>
